@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gyanvandna Library</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #f5911d;
+  --orange-dark: #db7a07;
+  --gold: #c89d35;
+  --deep: #35230b;
+  --background: #fef9f4;
+  --section-bg: #fff7eb;
+  --section-alt: #fbe6c2;
+  --light-card: #fff;
+  --shadow: 0 4px 24px 0 rgba(74,47,0,0.08), 0 1.5px 5px rgba(74,47,0,0.05);
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  background: var(--background);
+  color: var(--deep);
+  line-height: 1.7;
+}
+
+/* Header */
+header {
+  background: var(--light-card);
+  box-shadow: 0 2px 8px rgba(245,145,29,0.10), 0 1.5px 5px rgba(74,47,0,0.06);
+  padding: 0.7rem 0;
+  position: sticky; top: 0; width: 100%;
+  z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.logo {
+  display: flex; align-items: center;
+  margin-left: 2vw;
+}
+.logo img {
+  height: 60px; width: 60px; 
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 2px 12px rgba(245,145,29,0.09);
+  margin-right: 0.85rem;
+}
+.lib-title {
+  font-size: 1.5rem; font-weight: 700; letter-spacing: 2px;
+  color: var(--orange-dark);
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.nav-menu {
+  display: flex; gap: 1.25rem; margin-right: 2vw;
+}
+.nav-menu a {
+  color: var(--orange-dark);
+  background: transparent;
+  font-weight: 600;
+  letter-spacing: 1.1px;
+  font-size: 1.03rem;
+  padding: 0.47rem 1.22rem;
+  border-radius: 50px;
+  transition: all 0.2s;
+}
+.nav-menu a:hover {
+  background: linear-gradient(90deg, var(--orange), var(--gold) 97%);
+  color: #fff;
+  box-shadow: 0 3px 12px var(--orange, 0.11);
+}
+
+@media (max-width: 700px) {
+  header { flex-direction: column; align-items: flex-start; padding: 0.2rem 0;}
+  .logo {margin-left: 4vw;}
+  .nav-menu {margin: 0.5rem 0 0 4vw;}
+}
+
+/* Hero */
+.hero {
+  height: 62vh;
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1470&q=80') center center/cover no-repeat;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* .hero {
+  height: 62vh;
+  position: relative;
+  background: url('images/bgImage.png') center center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, rgba(245,145,29,0.82) 0%, rgba(186,120,9,0.68) 0%);
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 9;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+}
+.hero-content blockquote {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.3;
+  padding: 0 1.5rem;
+  text-shadow: 1px 2px 10px #945b0d1c;
+  margin-bottom: 1.2rem;
+}
+.hero-content cite {
+  opacity: 0.92;
+  font-style: normal;
+  font-size: 1.15rem;
+  margin-top: 0.65rem;
+  display: block;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+}
+.btn-get-started {
+  margin-top: 1.4rem;
+  background: linear-gradient(90deg,var(--gold), var(--orange));
+  color: #fff;
+  padding: 0.8rem 2.1rem;
+  border: none; border-radius: 28px;
+  font-weight: 700; font-size: 1.13rem; letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px #f5911d40;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-get-started:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 7px 32px #db7a073c, 0 5px 16px #945b0d20;
+}
+
+@media (max-width: 700px) {
+  .hero {height: 43vh;}
+  .hero-content blockquote{font-size:1.18rem;}
+}
+
+/* Section: Gallery */
+.gallery {
+  padding: 2rem 0 2.4rem 0;
+  background: var(--section-bg);
+}
+.gallery h2 {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  font-size: 2rem;
+  color: var(--orange-dark);
+  letter-spacing: 1px;
+  font-family: 'Montserrat', sans-serif;
+}
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.marquee-content {
+  display: inline-flex;
+  gap: 18px;
+  animation: scroll 25s linear infinite;
+}
+
+.marquee-content img {
+  width: 290px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2.5px solid var(--orange);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s;
+}
+
+.marquee-content img:hover {
+  transform: scale(1.07) translateY(-3px);
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+
+@keyframes marquee {
+  0% {transform: translateX(0);}
+  100% {transform: translateX(-65%);}
+}
+
+@media (max-width: 700px) { 
+  .marquee-content img { width: 70vw; min-width: 200px; height: 21vw; }
+}
+
+/* Section: Facilities */
+.facilities {
+  background: var(--section-alt);
+  padding: 2.4rem 0 2.2rem 0;
+}
+.facilities h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: var(--orange-dark);
+  font-family: 'Montserrat', sans-serif;
+}
+.facility-list {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 1.4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.facility-item {
+  flex: 1 1 180px;
+  min-width: 210px; max-width: 260px;
+  background: var(--light-card);
+  border-radius: 13px;
+  box-shadow: var(--shadow);
+  padding: 1.2rem 1rem 1.22rem 1rem;
+  text-align: center;
+  border: 1.7px solid var(--orange);
+  cursor: pointer;
+  transition: box-shadow .22s, transform .23s;
+  position: relative;
+  overflow: hidden;
+}
+.facility-item .facility-icon {
+  font-size: 2.7rem;
+  margin-bottom: 0.7rem;
+  color: var(--orange);
+  display: block;
+  transition: transform 0.21s;
+}
+.facility-item:hover {
+  box-shadow: 0 6px 34px var(--orange, 0.13),0 2.5px 5px #f5911d31;
+  transform: scale(1.04) translateY(-1px);
+  background:linear-gradient(112deg,#fff9ed, #ffecd0 105%);
+}
+.facility-item:hover .facility-icon {
+  transform: scale(1.11) rotate(-9deg);
+}
+@media (max-width: 900px){
+  .facility-list{flex-direction:column;align-items:center;}
+}
+
+/* Section: Timings & Pricing */
+.timings-pricing {
+  padding: 2.2rem 0 2rem 0;
+  text-align:center;
+  background: var(--section-bg);
+}
+.timings-pricing h2 {
+  font-size: 2rem; color: var(--orange-dark); margin-bottom: 0.4rem;
+  font-family: 'Montserrat', sans-serif;
+}
+.timings-pricing h3 {
+  color: var(--orange); margin: 0.3rem 0 1rem 0;
+  font-size: 1.12rem;
+}
+.timings-pricing p {
+  margin-bottom: 0.45rem;
+  font-size: 1.08rem;
+}
+.price {
+  font-size: 1.21rem;
+  color: var(--orange-dark);
+  margin: 0.7rem 0 0.4rem 0;
+  font-weight: 700;
+}
+.price-desc {
+  color: #6a501d;
+  font-size: 1.01rem;
+  margin-bottom: 0.5rem;
+}
+/* .btn-book-seat {
+  margin-top: 1.5rem;
+  background: linear-gradient(90deg,var(--orange), var(--gold) 90%);
+  color: #fff;
+  padding: 0.83rem 2.3rem;
+  border: none;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 10px #f5911d35;
+  transition: background 0.3s, transform 0.2s;
+  cursor: pointer;
+} */
+ .btn-book-seat {
+  margin-top: 1.5rem;  /* add space above the button */
+  background: linear-gradient(90deg,var(--orange), var(--gold) 90%);
+  color: #fff;
+  padding: 0.83rem 2.3rem;
+  border: none;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 10px #f5911d35;
+  transition: background 0.3s, transform 0.2s;
+  cursor: pointer;
+  display: inline-block; /* keep it as a button block */
+}
+
+.btn-book-seat:hover{
+  background: linear-gradient(90deg,var(--orange-dark), var(--gold) 50%);
+  transform: translateY(-1.5px) scale(1.04);
+}
+
+/* Section: Reviews */
+/* .reviews {
+  padding: 2.1rem 0 12vh 0;
+  background: var(--section-alt);
+}
+.reviews h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--orange-dark);
+  margin-bottom: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+}
+.review-card {
+  margin: 0.5rem auto;
+  border-radius: 16px;
+  background: var(--light-card);
+  max-width: 540px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--orange);
+  padding: 1.1rem 2.1rem;
+  transition: box-shadow 0.19s, transform .18s;
+}
+.review-card:hover{
+  transform: scale(1.035);
+  box-shadow: 0 6px 34px var(--orange, 0.17);
+}
+.review-author {
+  text-align: right; color: var(--orange-dark); margin-top: 0.9rem; font-size:1rem;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 1px;
+} */
+.review-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.review-card {
+  flex: 1 1 250px;  /* responsive width */
+  min-width: 220px;
+  max-width: 320px;
+  background: var(--light-card);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--orange);
+  padding: 1.2rem 1.5rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.review-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 34px var(--orange, 0.17);
+}
+.star-rating {
+  color: #f5a623;  /* gold */
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+.review-author {
+  text-align: right;
+  color: var(--orange-dark);
+  margin-top: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 1px;
+}
+
+/* Section: Contact */
+.contact {
+  padding: 2.25rem 0 1.7rem 0;
+  background: var(--section-bg);
+  text-align: center;
+}
+.contact h2 {
+  font-size: 2rem;
+  color: var(--orange-dark);
+  margin-bottom: 0.25rem;
+  font-family: 'Montserrat', sans-serif;
+}
+.contact h3{
+  color: var(--orange);
+  margin-bottom: 1.15rem;
+}
+.contact p {
+  margin-bottom: 0.46rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.contact-buttons {
+  margin-top: 0.7rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 1.4rem;
+}
+.btn-contact {
+  background: linear-gradient(90deg,var(--gold), var(--orange));
+  border: none;
+  padding: 0.69rem 1.7rem;
+  border-radius: 30px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.02rem;
+  cursor: pointer;
+  transition: background .22s, transform .2s;
+  box-shadow: 0 2px 11px #f5911d25;
+  letter-spacing: 0.7px;
+}
+.btn-contact:hover {
+  background: var(--orange-dark);
+  color: #fff;
+  transform: scale(1.06);
+}
+.address {
+  margin-top: 1.1rem;
+  font-weight: 600;
+  color: var(--orange-dark);
+  font-size:1.11rem;
+  letter-spacing: 0.5px;
+}
+iframe {
+  border: 0; margin-top: 1.1rem;
+  width: 99%; max-width: 520px;
+  height: 285px; border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 600px) {
+  .logo img {height:40px;width:40px;}
+  .lib-title {font-size:0.81rem;}
+  header { padding: 0.4rem 0;}
+  .hero { height:29vh; }
+  .hero-content blockquote { font-size:1rem;}
+  .marquee-content img { width:90vw; min-width: 90vw; height: 85px;}
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="images/logowhite.jpeg" alt="Gyanvandna Library Logo" />
+    <div class="lib-title">Gyanvandna Library</div>
+  </div>
+  <nav class="nav-menu">
+    <a href="#home">HOME</a>
+    <a href="#gallery">GALLERY</a>
+    <a href="#facilities">FACILITIES</a>
+    <a href="#pricing">PRICING</a>
+    <a href="#reviews">REVIEWS</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <blockquote>
+      [Arise, awake, and stop not till the goal is reached.]
+      <cite>— Swami Vivekananda</cite>
+    </blockquote>
+    <!-- <button class="btn-get-started">Get Started</button> -->
+       <a href="#contact" class="btn-book-seat">Book a Seat</a>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <h2>Gallery</h2>
+
+  <div class="marquee">
+    <div class="marquee-content">
+      <img src="images/image4.jpeg" alt="Library Interior">
+      <img src="images/image2.jpeg" alt="Library Interior">
+      <img src="images/image3.jpeg" alt="Library Interior">
+      <img src="images/image5.jpeg" alt="Library Interior">
+      <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=500&q=80" alt="Students Studying">
+      <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=500&q=80" alt="Reading Spaces">
+
+      <!-- DUPLICATE for SMOOTH infinite scrolling -->
+      <img src="images/image4.jpeg" alt="Library Interior">
+      <img src="images/image2.jpeg" alt="Library Interior">
+      <img src="images/image3.jpeg" alt="Library Interior">
+      <img src="images/image5.jpeg" alt="Library Interior">
+      <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=500&q=80" alt="Students Studying">
+      <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=500&q=80" alt="Reading Spaces">
+    </div>
+  </div>
+</section>
+
+
+<section class="facilities" id="facilities">
+  <h2>Our Facilities</h2>
+  <div class="facility-list">
+    <div class="facility-item"><span class="facility-icon">❄️</span>AC & Non-AC Separate Halls</div>
+    <div class="facility-item"><span class="facility-icon">📶</span>Free Wi-Fi Data Available</div>
+    <div class="facility-item"><span class="facility-icon">📚</span>Peaceful Study Environment</div>
+    <div class="facility-item"><span class="facility-icon">💺</span>Well Furnished & Comfortable Seats</div>
+    <div class="facility-item"><span class="facility-icon">📰</span>Newspaper & Magazines Available</div>
+    <div class="facility-item"><span class="facility-icon">🔌</span>Phone & Laptop Charging Points</div>
+    <div class="facility-item"><span class="facility-icon">🚻</span>Separate Washroom for Boys & Girls</div>
+    <div class="facility-item"><span class="facility-icon">💧</span>Cooled R.O. Water</div>
+    <div class="facility-item"><span class="facility-icon">🚗</span>Safe Parking Arrangements</div>
+    <!-- <div class="facility-item"><span class="facility-icon">☕️</span>Tea & Coffee Facilities</div> -->
+  </div>
+</section>
+
+<section class="timings-pricing" id="pricing">
+  <h2>Timings & Pricing</h2>
+  <h3>Gyanvandna Library – Premium Study Environment</h3>
+  <p>Operating Hours:</p>
+  <p>Monday to Sunday — 24 Hours</p>
+  <div class="price">AC Hall Full Day: ₹999/month</div>
+  <div class="price-desc">Climate-controlled environment with premium comfort</div>
+  <div class="price">AC Hall Half Day: ₹699/month</div>
+  <!-- <button class="btn-book-seat">Book a Seat</button> -->
+  <a href="#contact" class="btn-book-seat">Book a Seat</a>
+
+</section>
+
+<!-- <section class="reviews" id="reviews">
+  <h2>What Our Students Say</h2>
+  <div class="review-card">
+    <p>Great library with peaceful atmosphere. The staff is very helpful and the timings are convenient.</p>
+    <p class="review-author">— Sanya Mehta</p>
+  </div>
+</section> -->
+
+
+<section class="timings-pricing" id="pricing">
+  <h2>What Our Students Say</h2>
+  <div class="review-list">
+    <div class="review-card">
+      <div class="star-rating">★★★★★</div>
+      <p>Great library with peaceful atmosphere. The staff is very helpful and the timings are convenient.</p>
+      <p class="review-author">— Sanya Meena</p>
+    </div>
+
+    <div class="review-card">
+      <div class="star-rating">★★★★★</div>
+      <p>This is the best study library in the area. Clean environment, comfortable seating and very calm place.</p>
+      <p class="review-author">— Priya Sharma</p>
+    </div>
+
+    <div class="review-card">
+      <div class="star-rating">★★★★☆</div>
+      <p>The 24-hour availability helps me prepare for exams without stress. Highly recommended!</p>
+      <p class="review-author">— Rahul Verma</p>
+    </div>
+
+   <div class="review-card">
+    <div class="star-rating">★★★★★</div>
+    <p>High-speed Wi-Fi and quiet halls make it perfect for competitive exam preparation.</p>
+    <p class="review-author">— Anuj Singh</p>
+  </div>
+
+  <div class="review-card">
+    <div class="star-rating">★★★★★</div>
+    <p>Very disciplined environment. The AC hall is very comfortable for long hours of study.</p>
+    <p class="review-author">— Neha</p>
+  </div>
+  <div class="review-card">
+    <div class="star-rating">★★★★★</div>
+  <p>Gyanvandana library is a very good library and has a peaceful environment and one can study well</p>
+  <p class="review-author">— Naresh Meena</p>
+</div>
+<div class="review-card">
+  <div class="star-rating">★★★★★</div>
+  <p>Best library in jagatpura fatak.24*7 open Peaceful environment</p>
+  <p class="review-author">— Kalu ram Meena</p>
+</div>
+<div class="review-card">
+  <div class="star-rating">★★★★★</div>
+  <p>Very good atmosphere in this library.Full day ac on.Comfortable seat and chair.24*7 Open Best library in jagatpura</p>
+  <p class="review-author">— Manoj “Vinnu” Sirra</p>
+</div>
+<div class="review-card">
+  <div class="star-rating">★★★★★</div>
+  <p>Best library for your best future with all facilities</p>
+  <p class="review-author">— LOKESH KUMAR MEENA</p>
+</div>
+  </div>
+</section>
+
+
+<section class="contact" id="contact">
+  <h2>Contact Us</h2>
+  <h3>Get in Touch</h3>
+  <p>Phone: +919057961553</p>
+  <div class="contact-buttons">
+    <button class="btn-contact" onclick="window.location.href='tel:919057961553'">Call Now</button>
+    <button class="btn-contact" onclick="window.location.href='https://wa.me/919057961553'">WhatsApp</button>
+  </div>
+  <p class="address">Plot No 10, Shivram Colony, Jagatpura, Jaipur, Rajasthan 302017</p>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7120.442406392573!2d75.82936418487935!3d26.832915816604242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db7d6689892d5%3A0xe54578e7123bf2bb!2sGyanVandna%20Library!5e0!3m2!1sen!2sus!4v1763740990689!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+</body>
+</html>
